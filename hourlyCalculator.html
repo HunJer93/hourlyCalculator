@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hourly Calculator</title>\
+	<!--Funcitons-->
+	<script type="text/javascript">
+		//input_output is responsible for requesting our user inputs and displaying the output information
+		function input_output(){
+			//declare local variables set to user input. Requests are then converted to floats using parseFloat.
+			var hoursWorked = parseFloat(window.prompt("Please enter your hours worked:"));
+			var payRate = parseFloat(window.prompt("Please enter your hourly pay rate:"));
+			var taxRate = parseFloat(window.prompt("Please enter your tax rate:")/100); //divided by 100 so that the rate is set to a percentage.
+			//output statement
+			document.write(`<h1>Hours Worked: ${hoursWorked}</h1>
+							<h1>Hourly Pay Rate: $${payRate.toFixed(2)}</h1>
+							<h1>Tax Rate: ${taxRate * 100}%</h1>
+							<h1>Net Pay: $${calculate_pay(hoursWorked, payRate, taxRate).toFixed(2)}</h1>`);
+		}//end input_output
+
+		//calculate_pay is responsible for calculating our net pay.
+		function calculate_pay(hoursWorked, payRate, taxRate){ 
+			//declare other local variables equal to calculations
+			var grossPay = hoursWorked * payRate;
+			var taxAmount = grossPay * taxRate;
+			var netPay = grossPay - taxAmount;
+
+			//return net pay
+			return netPay;
+			
+
+		}//end calculate_pay
+	</script>
+</head>
+<body style="background-color: silver;">
+
+	<!--call functions-->
+	<script type="text/javascript">
+		//call input_output function
+		input_output();
+	</script>
+
+</body>
+</html>
